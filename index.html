@@ -439,12 +439,46 @@
         }
         .developer-footer a { color: #60a5fa; text-decoration: none; }
 
+        /* ИСПРАВЛЕННЫЕ СТИЛИ ПЕЧАТИ (СТРОГО ОДНА СТРАНИЦА) */
         @media print {
-            body * { visibility: hidden; }
-            #printModal, #printModal * { visibility: visible; }
-            #printModal { position: absolute; left: 0; top: 0; background: white; padding: 0; }
-            .receipt-content { box-shadow: none; width: 100%; max-width: 100%; }
-            .no-print { display: none !important; }
+            body > *:not(#printModal) {
+                display: none !important;
+            }
+            body, html {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                width: 100% !important;
+                height: auto !important;
+                overflow: hidden !important;
+            }
+            #printModal {
+                display: block !important;
+                position: absolute !important;
+                left: 0 !important;
+                top: 0 !important;
+                width: 100% !important;
+                height: auto !important;
+                background: white !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                z-index: 9999;
+            }
+            .receipt-content {
+                box-shadow: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 5px !important;
+                border: none !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            @page {
+                size: auto;
+                margin: 5mm;
+            }
         }
     </style>
 </head>
@@ -991,7 +1025,7 @@
                 </div>
                 <div class="receipt-signatures">
                     <div class="sig-row">
-                        <span>Мастер: Эльтун</span>
+                        <span>Мастер: Жахонгир</span>
                         <span>Подпись: <span class="sig-line"></span></span>
                     </div>
                     <div class="sig-row">
@@ -1069,4 +1103,3 @@
     </script>
 </body>
 </html>
-
